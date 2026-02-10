@@ -40,15 +40,26 @@ body {
 	opacity: 0.95;
 }
 
-/* Timeline layout */
+/* Timeline layout (horizontal scroll with snap) */
 .timeline {
 	max-width: 1100px;
 	margin: 30px auto;
 	padding: 0 20px 30px;
 	display: flex;
-	flex-wrap: wrap;
 	gap: 20px;
-	justify-content: center;
+	overflow-x: auto; /* allow horizontal scrolling */
+	scroll-snap-type: x mandatory; /* snap cards into place */
+	scroll-padding: 20px; /* keep space at the edges */
+}
+
+/* Hide the scrollbar track color (optional, simple) */
+.timeline::-webkit-scrollbar {
+	height: 10px;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+	background-color: #c9d6e6;
+	border-radius: 10px;
 }
 
 /* Individual cards */
@@ -59,6 +70,8 @@ body {
 	padding: 16px;
 	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	scroll-snap-align: start; /* snap each card */
+	flex: 0 0 auto; /* keep cards from shrinking */
 }
 
 .card img {
@@ -79,14 +92,25 @@ body {
 	margin-top: 4px;
 }
 
-.card p {
+/* Details hidden by default */
+.card-details {
 	font-size: 0.95rem;
 	margin-top: 8px;
+	max-height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .card:hover {
-	transform: translateY(-6px);
-	box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+	transform: translateY(-6px) scale(1.02);
+	box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+}
+
+/* Reveal details on hover */
+.card:hover .card-details {
+	max-height: 200px;
+	opacity: 1;
 }
 
 /* Bottom hint text */
@@ -105,9 +129,18 @@ body {
 
 	.timeline {
 		padding: 0 16px 24px;
+		flex-direction: column; /* stack vertically on small screens */
+		overflow-x: visible;
+		scroll-snap-type: none;
 	}
 
 	.card {
 		width: 100%;
+	}
+
+	/* Always show details on touch screens */
+	.card-details {
+		max-height: none;
+		opacity: 1;
 	}
 }
