@@ -1,1 +1,113 @@
-/* Add your CSS here */
+/* Basic page setup */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #f4f7fb;
+	color: #1a1a1a;
+	line-height: 1.6;
+}
+
+/* Hero section */
+.hero {
+	background: linear-gradient(135deg, #0a55a1, #3a8dde);
+	color: #ffffff;
+	padding: 40px 20px;
+	text-align: center;
+}
+
+.hero-content {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.hero-logo {
+	width: 140px;
+	margin-bottom: 16px;
+}
+
+.hero h1 {
+	font-size: 2.2rem;
+	margin-bottom: 12px;
+}
+
+.hero p {
+	font-size: 1rem;
+	opacity: 0.95;
+}
+
+/* Timeline layout */
+.timeline {
+	max-width: 1100px;
+	margin: 30px auto;
+	padding: 0 20px 30px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
+
+/* Individual cards */
+.card {
+	background-color: #ffffff;
+	width: 320px;
+	border-radius: 12px;
+	padding: 16px;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card img {
+	width: 100%;
+	height: 180px;
+	object-fit: cover;
+	border-radius: 8px;
+	margin: 10px 0;
+}
+
+.card h2 {
+	color: #0a55a1;
+	font-size: 1.4rem;
+}
+
+.card h3 {
+	font-size: 1.1rem;
+	margin-top: 4px;
+}
+
+.card p {
+	font-size: 0.95rem;
+	margin-top: 8px;
+}
+
+.card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+/* Bottom hint text */
+.hint {
+	text-align: center;
+	padding: 10px 20px 30px;
+	color: #4a4a4a;
+	font-size: 0.95rem;
+}
+
+/* Mobile-friendly tweaks */
+@media (max-width: 768px) {
+	.hero h1 {
+		font-size: 1.8rem;
+	}
+
+	.timeline {
+		padding: 0 16px 24px;
+	}
+
+	.card {
+		width: 100%;
+	}
+}
